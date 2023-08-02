@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 const signupSchema = new mongoose.Schema({
     emial: {
         type: String,
@@ -17,6 +18,6 @@ const signupSchema = new mongoose.Schema({
     },
 });
 
-const Signup = mongoose.model("Signup", signupSchema);
+module.exports = mongoose.models.Signup || mongoose.model("Signup", signupSchema);
 
-export default Signup;
+

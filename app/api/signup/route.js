@@ -1,14 +1,12 @@
-import mongoose from "mongoose";
+import connectToMongodb from "@/lib/mongodb/mongodb";
 import Singup from "../db/mongo";
 import { NextResponse } from "next/server";
 
-mongoose
-    .connect(process.env.MONGODB_URL)
-    .then(() => console.log("connected"))
-    .catch(() => console.log("Error while connecting"));
+connectToMongodb();
 
 export async function POST(req) {
     const data = await req.formData();
+
 
     const register = new Singup({
         emial: data.get("email"),

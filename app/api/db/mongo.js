@@ -16,6 +16,10 @@ const signupSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    idproof: {
+        type: String,
+        required: true
+    }
 });
 
 module.exports = mongoose.models.Signup || mongoose.model("Signup", signupSchema);

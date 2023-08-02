@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import axios from "axios";
 
 export default function FileUpload({ oldData }) {
     const [usernameState, setUsernameState] = useState("");
@@ -12,16 +13,28 @@ export default function FileUpload({ oldData }) {
 
         if (!usernameState || !idProof) return;
 
-        signUpForm.append("username", usernameState);
-        signUpForm.append("email", oldData.email);
-        signUpForm.append("password", oldData.password);
-        signUpForm.append("id-proof", idProof);
+        const imageForm = new FormData();
+        imageForm.append("image", idProof);
 
-        const res = await fetch("/api/signup", {
-            method: "POST",
-            body: signUpForm,
-        });
-        alert(await res.json());
+        try {
+            const imgbbResult = await axios.post(
+                `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_KEY}`,
+                imageForm
+            );
+
+            signUpForm.append("username", usernameState);
+            signUpForm.append("email", oldData.email);
+            signUpForm.append("password", oldData.password);
+            signUpForm.append("id-proof", imgbbResult.data.data.url);
+
+            const res = await fetch("/api/signup", {
+                method: "POST",
+                body: signUpForm,
+            });
+            alert(await res.json());
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (

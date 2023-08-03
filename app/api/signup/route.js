@@ -1,5 +1,5 @@
 import connectToMongodb from "@/lib/mongodb/mongodb";
-import Singup from "../db/mongo";
+import Singup from "../../../lib/models/mongo";
 import { NextResponse } from "next/server";
 
 connectToMongodb();

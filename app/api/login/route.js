@@ -1,5 +1,5 @@
 import connectToMongodb from "@/lib/mongodb/mongodb";
-import Signup from "../db/mongo";
+import Signup from "../../../lib/models/mongo";
 import { NextResponse } from "next/server";
 
 connectToMongodb();

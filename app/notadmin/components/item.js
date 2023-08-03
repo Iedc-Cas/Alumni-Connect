@@ -1,5 +1,6 @@
 "use client";
 
+
 import { useState } from "react";
 
 export default function ItemCard({ name, email, imgUrl }) {
@@ -21,7 +22,7 @@ export default function ItemCard({ name, email, imgUrl }) {
                 <div className="fixed bg-opacity-50 bg-gray-700 top-0 left-0 right-0 bottom-0 flex justify-center items-center z-40">
                     <div className="p-5 rounded-lg bg-gray-900 max-w-[800px] opacity-100">
                         <h1>{name}</h1>
-                        <img src={imgUrl} alt="just an image" className="w-full p-4" />
+                        <img src={imgUrl} alt="just image" className="w-full p-4" />
                         <div className="flex gap-1">
                             <button
                                 className="py-2 px-1 rounded-lg min-w-[80px] bg-green-500"

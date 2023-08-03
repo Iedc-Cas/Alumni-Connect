@@ -11,6 +11,7 @@ export default async function AdminPage() {
 
     return (
         <section className="min-h-screen bg-primary">
+            <nav className="h-[60px] bg-gray-800"></nav>
             <div className="text-white flex items-center pt-20 flex-col gap-5">
                 {data.map((item) => (
                     <ItemCard name={item.username} email={item.emial} imgUrl={item.idproof} key={item.username} />
